@@ -71,7 +71,7 @@ module SeedFu
         else
           record.assign_attributes(data)
         end
-        record.save(:validate => true) || raise(ActiveRecord::RecordNotSaved, 'Record not saved!')
+        record.save(:validate => true) || raise(ActiveRecord::RecordNotSaved, record.errors.full_messages.join(','))
         record
       end
 
