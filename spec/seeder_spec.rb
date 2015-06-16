@@ -148,8 +148,8 @@ describe SeedFu::Seeder do
     expect { SeededModel.seed(:doesnt_exist, :title => "Bla") }.to raise_error(ArgumentError)
   end
 
-  it "should not perform validation" do
-    expect { SeededModel.seed(:id => 1) }.not_to raise_error()
+  it "should perform validation" do
+    expect { SeededModel.seed(:id => 1) }.to raise_error()
   end
 
   if ENV["DB"] == "postgresql"
